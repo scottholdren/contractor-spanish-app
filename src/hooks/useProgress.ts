@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import type { CardProgress, Direction } from "../lib/types";
-import { createInitialProgress, reviewCard, isLearned } from "../lib/leitner";
+import { createInitialProgress, reviewCard } from "../lib/leitner";
 
 const PROGRESS_KEY = "painting-deck-progress";
 const DIRECTION_KEY = "painting-deck-direction";
@@ -61,7 +61,7 @@ export function useProgress() {
   const learnedCount = useCallback((): number => {
     let count = 0;
     for (const p of progress.values()) {
-      if (isLearned(p)) count++;
+      if (p.box >= 2) count++;
     }
     return count;
   }, [progress]);

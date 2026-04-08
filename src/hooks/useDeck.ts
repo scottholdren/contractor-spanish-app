@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import type { Term, CardProgress } from "../lib/types";
 import { isDue } from "../lib/leitner";
 
@@ -11,9 +11,12 @@ export function useDeck(
   loaded: boolean
 ) {
   const [queue, setQueue] = useState<Term[]>([]);
+  const initialized = useRef(false);
 
+  // Build queue only once on first load
   useEffect(() => {
-    if (!loaded) return;
+    if (!loaded || initialized.current) return;
+    initialized.current = true;
 
     const dueCards: Term[] = [];
     const newCards: Term[] = [];

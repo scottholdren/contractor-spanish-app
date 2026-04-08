@@ -24,8 +24,12 @@ export function TermListItem({ term, direction }: Props) {
         />
       </div>
       <div className="flex-1 min-w-0">
-        <div className="text-lg font-bold text-[#1C1917] truncate">{term.en}</div>
-        <div className="text-base font-semibold text-[#D97706] truncate">{term.es}</div>
+        <div className="text-lg font-bold text-[#1C1917] truncate">
+          {direction === "en-to-es" ? term.en : term.es}
+        </div>
+        <div className="text-base font-semibold text-[#D97706] truncate">
+          {direction === "en-to-es" ? term.es : term.en}
+        </div>
         {term.variants.length > 0 && (
           <div className="text-sm text-[#78716C] italic truncate">
             Also: {term.variants.map((v) => `${v.term} (${v.regions.join(", ")})`).join(", ")}
