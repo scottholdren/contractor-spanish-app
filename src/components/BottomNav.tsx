@@ -13,7 +13,7 @@ const tabs: { id: Tab; label: string; icon: string }[] = [
 
 export function BottomNav({ active, onSelect }: Props) {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 h-20 bg-white border-t-2 border-[#E7E5E4] flex justify-around items-center z-10">
+    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-[#E7E5E4] flex justify-around items-center z-10 pb-[env(safe-area-inset-bottom)] h-20">
       {tabs.map((tab) => (
         <button
           key={tab.id}
