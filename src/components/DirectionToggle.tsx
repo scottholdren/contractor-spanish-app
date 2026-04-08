@@ -6,14 +6,14 @@ interface Props {
 }
 
 export function DirectionToggle({ direction, onToggle }: Props) {
+  const label = direction === "en-to-es" ? "English → Spanish" : "Spanish → English";
+
   return (
     <button
       onClick={onToggle}
-      className="flex items-center gap-2 px-5 min-h-[48px] rounded-xl border-2 border-[#E7E5E4] bg-[#F5F3F0] text-base font-bold text-[#1C1917] active:bg-[#ECEAE6]"
+      className="px-5 min-h-[48px] rounded-xl border-2 border-[#E7E5E4] bg-[#F5F3F0] text-sm font-bold text-[#1C1917] active:bg-[#ECEAE6] whitespace-nowrap"
     >
-      <span className={direction === "en-to-es" ? "text-[#D97706]" : ""}>EN</span>
-      <span className="text-[#A8A29E]">→</span>
-      <span className={direction === "es-to-en" ? "text-[#D97706]" : ""}>ES</span>
+      {label}
     </button>
   );
 }

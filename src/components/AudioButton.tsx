@@ -1,4 +1,4 @@
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useEffect } from "react";
 
 interface Props {
   src: string;
@@ -7,6 +7,11 @@ interface Props {
 
 export function AudioButton({ src, size = "md" }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Update audio source whenever src prop changes
+  useEffect(() => {
+    audioRef.current = new Audio(src);
+  }, [src]);
 
   const play = useCallback(() => {
     if (!audioRef.current) {
