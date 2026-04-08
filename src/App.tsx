@@ -21,7 +21,7 @@ export function App() {
   } = useProgress();
 
   return (
-    <div className="max-w-[480px] mx-auto px-4 pt-5 pb-24 min-h-screen bg-white font-['DM_Sans']">
+    <div className="max-w-[480px] mx-auto px-4 pt-5 pb-28 min-h-screen bg-white font-['DM_Sans']">
       <header className="mb-6">
         <h1 className="text-2xl font-bold text-[#D97706]">The Painting Deck</h1>
       </header>

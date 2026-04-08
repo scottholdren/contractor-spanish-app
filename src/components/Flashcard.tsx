@@ -26,13 +26,15 @@ export function Flashcard({ term, direction, onResponse }: Props) {
         onClick={() => !flipped && setFlipped(true)}
         className="w-full bg-[#F5F3F0] rounded-2xl border-2 border-[#E7E5E4] p-6 text-center active:bg-[#ECEAE6]"
       >
-        <div className="w-[220px] h-[160px] bg-[#ECEAE6] rounded-xl mx-auto mb-5 border-2 border-[#E7E5E4] overflow-hidden">
+        <div className="w-[220px] h-[160px] bg-[#ECEAE6] rounded-xl mx-auto mb-5 border-2 border-[#E7E5E4] overflow-hidden flex items-center justify-center text-5xl">
           <img
             src={term.photo}
             alt={term.en}
             className="w-full h-full object-cover"
             onError={(e) => {
-              (e.target as HTMLImageElement).style.display = "none";
+              const el = e.target as HTMLImageElement;
+              el.style.display = "none";
+              el.parentElement!.textContent = "🔧";
             }}
           />
         </div>

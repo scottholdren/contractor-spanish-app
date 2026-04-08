@@ -17,7 +17,9 @@ export function TermListItem({ term, direction }: Props) {
           alt={term.en}
           className="w-full h-full object-cover"
           onError={(e) => {
-            (e.target as HTMLImageElement).style.display = "none";
+            const el = e.target as HTMLImageElement;
+            el.style.display = "none";
+            el.parentElement!.textContent = "🔧";
           }}
         />
       </div>
