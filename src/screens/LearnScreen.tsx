@@ -20,7 +20,7 @@ export function LearnScreen({
   onToggleDirection,
   loaded,
 }: Props) {
-  const { currentCard, remaining, isEmpty, advance } = useDeck(
+  const { currentCard, remaining, isEmpty, hasMoreNew, advance, loadMore, restart } = useDeck(
     terms,
     progress,
     updateCardProgress,
@@ -33,10 +33,34 @@ export function LearnScreen({
 
   if (isEmpty) {
     return (
-      <div className="text-center py-16 space-y-3">
+      <div className="text-center py-16 space-y-4">
         <div className="text-4xl">✓</div>
-        <div className="text-2xl font-bold text-[#1C1917]">All caught up!</div>
-        <div className="text-lg font-medium text-[#78716C]">No cards due for review. Check back tomorrow.</div>
+        <div className="text-2xl font-bold text-[#1C1917]">Nice work!</div>
+        {hasMoreNew ? (
+          <>
+            <div className="text-lg font-medium text-[#78716C]">
+              Ready for more?
+            </div>
+            <button
+              onClick={loadMore}
+              className="mt-2 px-8 min-h-[72px] rounded-xl bg-[#D97706] text-white font-bold text-lg active:bg-[#B45309]"
+            >
+              Next 5 cards
+            </button>
+          </>
+        ) : (
+          <>
+            <div className="text-lg font-medium text-[#78716C]">
+              You've been through every card.
+            </div>
+            <button
+              onClick={restart}
+              className="mt-2 px-8 min-h-[72px] rounded-xl border-2 border-[#D97706] text-[#D97706] font-bold text-lg active:bg-[#FEF3C7]"
+            >
+              Start over (shuffled)
+            </button>
+          </>
+        )}
       </div>
     );
   }

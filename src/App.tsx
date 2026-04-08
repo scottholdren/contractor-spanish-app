@@ -26,15 +26,15 @@ export function App() {
         <h1 className="text-2xl font-bold text-[#D97706]">The Painting Deck</h1>
       </header>
 
-      {activeTab === "browse" && (
+      <div className={activeTab === "browse" ? "" : "hidden"}>
         <BrowseScreen
           terms={terms}
           direction={direction}
           onToggleDirection={toggleDirection}
         />
-      )}
+      </div>
 
-      {activeTab === "learn" && (
+      <div className={activeTab === "learn" ? "" : "hidden"}>
         <LearnScreen
           terms={terms}
           progress={progress}
@@ -43,15 +43,15 @@ export function App() {
           onToggleDirection={toggleDirection}
           loaded={loaded}
         />
-      )}
+      </div>
 
-      {activeTab === "progress" && (
+      <div className={activeTab === "progress" ? "" : "hidden"}>
         <ProgressScreen
           terms={terms}
           progress={progress}
           learnedCount={learnedCount()}
         />
-      )}
+      </div>
 
       <BottomNav active={activeTab} onSelect={setActiveTab} />
     </div>
